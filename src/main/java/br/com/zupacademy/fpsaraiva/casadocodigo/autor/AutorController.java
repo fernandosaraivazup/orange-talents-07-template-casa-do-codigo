@@ -1,8 +1,10 @@
 package br.com.zupacademy.fpsaraiva.casadocodigo.autor;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.transaction.Transactional;
@@ -16,9 +18,9 @@ public class AutorController {
 
     @PostMapping(value="/api/autor")
     @Transactional
-    public String criarUsuario(@Valid @RequestBody AutorFormRequest form) {
+    @ResponseStatus(HttpStatus.OK)
+    public void criarAutor(@Valid @RequestBody AutorFormRequest form) {
         Autor novoAutor = form.criarAutor();
-        System.out.println(novoAutor);
         autorRepository.save(novoAutor);
     }
 }
