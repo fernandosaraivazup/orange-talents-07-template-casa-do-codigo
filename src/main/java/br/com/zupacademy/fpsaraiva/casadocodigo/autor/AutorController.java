@@ -13,10 +13,12 @@ public class AutorController {
 
     @Autowired
     private AutorRepository autorRepository;
+    @Autowired
+    private SemEmailDoAutorDuplicadoValidator semEmailDoAutorDuplicadoValidator;
 
     @InitBinder()
     public void initBinder(WebDataBinder databinder) {
-        databinder.addValidators(new SemEmailDoAutorDuplicado(autorRepository));
+        databinder.addValidators(semEmailDoAutorDuplicadoValidator);
     }
 
     @PostMapping(value="/api/autor")
