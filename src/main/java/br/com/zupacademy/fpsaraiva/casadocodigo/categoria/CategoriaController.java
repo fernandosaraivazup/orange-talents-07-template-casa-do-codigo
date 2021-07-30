@@ -2,10 +2,8 @@ package br.com.zupacademy.fpsaraiva.casadocodigo.categoria;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
@@ -15,6 +13,13 @@ public class CategoriaController {
 
     @Autowired
     private CategoriaRepository categoriaRepository;
+    @Autowired
+    private SemNomeDeCategoriaDuplicadoValidator semNomeDeCategoriaDuplicadoValidator;
+
+    @InitBinder
+    public void initBinder(WebDataBinder databinder) {
+        databinder.addValidators(semNomeDeCategoriaDuplicadoValidator);
+    }
 
     @PostMapping(value="/api/categoria")
     @Transactional

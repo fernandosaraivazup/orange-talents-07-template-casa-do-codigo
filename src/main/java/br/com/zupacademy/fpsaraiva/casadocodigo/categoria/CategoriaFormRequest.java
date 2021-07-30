@@ -12,4 +12,6 @@ public class CategoriaFormRequest {
     public CategoriaFormRequest(@JsonProperty("nome") @NotBlank String nome) { this.nome = nome; }
 
     public Categoria criarCategoria() { return new Categoria(nome); }
+
+    public String getNome() { return nome; }
 }
