@@ -16,7 +16,7 @@ public class AutorController {
     @Autowired
     private SemEmailDoAutorDuplicadoValidator semEmailDoAutorDuplicadoValidator;
 
-    @InitBinder()
+    @InitBinder
     public void initBinder(WebDataBinder databinder) {
         databinder.addValidators(semEmailDoAutorDuplicadoValidator);
     }
