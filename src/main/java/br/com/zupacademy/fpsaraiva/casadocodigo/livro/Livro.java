@@ -41,6 +41,10 @@ public class Livro {
     @Valid
     private Autor autor;
 
+    @Deprecated
+    public Livro() {
+    }
+
     public Livro(@NotBlank String titulo, @NotBlank @Size(max = 500) String resumo, @NotBlank String sumario,
                  @NotNull @Min(20) BigDecimal preco, @Min(100) int numeroPaginas, @NotBlank String isbn,
                  @NotNull @Future LocalDate dataPublicacao, @NotNull @Valid Autor autor, @NotNull @Valid Categoria categoria) {
@@ -53,6 +57,14 @@ public class Livro {
         this.dataPublicacao = dataPublicacao;
         this.autor = autor;
         this.categoria = categoria;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getTitulo() {
+        return titulo;
     }
 
     @Override
