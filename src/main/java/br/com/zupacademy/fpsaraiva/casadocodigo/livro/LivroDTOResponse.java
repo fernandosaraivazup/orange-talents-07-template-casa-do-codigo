@@ -21,6 +21,7 @@ public class LivroDTOResponse {
         this.titulo = titulo;
     }
 
+    //Sem estes 2 getters, ocorre um erro de serialização da resposta no formato JSON
     public Long getId() {
         return id;
     }
