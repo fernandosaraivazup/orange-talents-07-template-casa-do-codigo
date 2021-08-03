@@ -63,4 +63,12 @@ public class ClienteFormRequest {
                 entityManager.find(Pais.class, idPais), entityManager.find(Estado.class, idEstado));
     }
 
+    public Long getIdPais() {
+        return idPais;
+    }
+
+    public Long getIdEstado() {
+        return idEstado;
+    }
+
 }
