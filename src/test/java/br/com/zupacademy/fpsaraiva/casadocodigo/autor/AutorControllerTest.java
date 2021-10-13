@@ -30,7 +30,7 @@ public class AutorControllerTest {
 
     @DisplayName("Deve retornar status 200 e cadastrar autor no banco")
     @Test
-    void deveRetornar200ECadastrarAutorNoBanco() throws Exception {
+    void deveRetornarStatus200ECadastrarAutorNoBanco() throws Exception {
         //cenario
         URI uri = new URI("/api/autor");
         String json = "{\"nome\":\"Fernando\",\"email\":\"fernando@email.com\",\"descricao\":\"Teste descricao\"}";
@@ -48,5 +48,41 @@ public class AutorControllerTest {
         assertEquals("Fernando", novoAutorCriado.get().getNome());
         assertEquals("fernando@email.com", novoAutorCriado.get().getEmail());
         assertEquals("Teste descricao", novoAutorCriado.get().getDescricao());
+    }
+
+    @DisplayName("Deve retornar status 400 ao tentar cadastrar autor com nome inválido")
+    @Test
+    void deveRetornarStatus400AoTentarCadatrarAutorComNomeInvalido() throws Exception {
+        URI uri = new URI("/api/autor");
+        String json = "{\"nome\":\"\",\"email\":\"fernando@email.com\",\"descricao\":\"Teste descricao\"}";
+
+        mockMvc.perform(MockMvcRequestBuilders.post(uri)
+                        .content(json)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().is(400));
+    }
+
+    @DisplayName("Deve retornar status 400 ao tentar cadastrar autor com e-mail incorreto")
+    @Test
+    void deveRetornarStatus400AoTentarCadatrarAutorComEmailIncorreto() throws Exception {
+        URI uri = new URI("/api/autor");
+        String json = "{\"nome\":\"Fernando\",\"email\":\"fernandoemail.com\",\"descricao\":\"Teste descricao\"}";
+
+        mockMvc.perform(MockMvcRequestBuilders.post(uri)
+                        .content(json)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().is(400));
+    }
+
+    @DisplayName("Deve retornar status 400 ao tentar cadastrar autor com descrição inválida")
+    @Test
+    void deveRetornarStatus400AoTentarCadatrarAutorComDescricaoInvalida() throws Exception {
+        URI uri = new URI("/api/autor");
+        String json = "{\"nome\":\"\",\"email\":\"fernando@email.com\",\"descricao\":\"\"}";
+
+        mockMvc.perform(MockMvcRequestBuilders.post(uri)
+                        .content(json)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().is(400));
     }
 }
