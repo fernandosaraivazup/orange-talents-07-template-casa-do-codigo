@@ -27,8 +27,4 @@ public class AutorFormRequest {
     public Autor criarAutor() {
         return new Autor(nome, email, descricao);
     }
-
-    public String getEmail() {
-        return email;
-    }
 }
