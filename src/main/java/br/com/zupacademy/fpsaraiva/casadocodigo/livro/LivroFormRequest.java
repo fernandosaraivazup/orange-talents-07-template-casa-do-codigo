@@ -1,6 +1,6 @@
 package br.com.zupacademy.fpsaraiva.casadocodigo.livro;
 
-import br.com.zupacademy.fpsaraiva.casadocodigo.autor.Autor;
+import br.com.zupacademy.fpsaraiva.casadocodigo.cadastroautor.Autor;
 import br.com.zupacademy.fpsaraiva.casadocodigo.categoria.Categoria;
 import br.com.zupacademy.fpsaraiva.casadocodigo.compartilhado.ExisteId;
 import br.com.zupacademy.fpsaraiva.casadocodigo.compartilhado.ValorUnico;

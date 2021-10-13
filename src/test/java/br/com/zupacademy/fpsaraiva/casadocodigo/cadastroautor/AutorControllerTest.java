@@ -1,4 +1,4 @@
-package br.com.zupacademy.fpsaraiva.casadocodigo.autor;
+package br.com.zupacademy.fpsaraiva.casadocodigo.cadastroautor;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -52,7 +52,7 @@ public class AutorControllerTest {
 
     @DisplayName("Deve retornar status 400 ao tentar cadastrar autor com nome inválido")
     @Test
-    void deveRetornarStatus400AoTentarCadatrarAutorComNomeInvalido() throws Exception {
+    void deveRetornarStatus400AoTentarCadastrarAutorComNomeInvalido() throws Exception {
         URI uri = new URI("/api/autor");
         String json = "{\"nome\":\"\",\"email\":\"fernando@email.com\",\"descricao\":\"Teste descricao\"}";
 
@@ -64,7 +64,7 @@ public class AutorControllerTest {
 
     @DisplayName("Deve retornar status 400 ao tentar cadastrar autor com e-mail incorreto")
     @Test
-    void deveRetornarStatus400AoTentarCadatrarAutorComEmailIncorreto() throws Exception {
+    void deveRetornarStatus400AoTentarCadastrarAutorComEmailIncorreto() throws Exception {
         URI uri = new URI("/api/autor");
         String json = "{\"nome\":\"Fernando\",\"email\":\"fernandoemail.com\",\"descricao\":\"Teste descricao\"}";
 
@@ -76,11 +76,27 @@ public class AutorControllerTest {
 
     @DisplayName("Deve retornar status 400 ao tentar cadastrar autor com descrição inválida")
     @Test
-    void deveRetornarStatus400AoTentarCadatrarAutorComDescricaoInvalida() throws Exception {
+    void deveRetornarStatus400AoTentarCadastrarAutorComDescricaoInvalida() throws Exception {
         URI uri = new URI("/api/autor");
         String json = "{\"nome\":\"\",\"email\":\"fernando@email.com\",\"descricao\":\"\"}";
 
         mockMvc.perform(MockMvcRequestBuilders.post(uri)
+                        .content(json)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().is(400));
+    }
+
+    @DisplayName("Deve retornar status 400 ao tentar cadastrar autor com email duplicado")
+    @Test
+    public void deveRetornarStatus4000AoTentarCadastrarAutorComEmailDuplicado() throws Exception {
+        this.autorRepository.deleteAll();
+        this.autorRepository.save(new Autor("Autor", "autor@email.com", "Teste descricao"));
+
+        URI uri = new URI("/api/autor");
+        String json = "{\"nome\":\"Autor\", \"email\":\"autor@email.com\", \"descricao\": \"Teste descricao\"}";
+
+        mockMvc.perform(
+                MockMvcRequestBuilders.post(uri)
                         .content(json)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().is(400));

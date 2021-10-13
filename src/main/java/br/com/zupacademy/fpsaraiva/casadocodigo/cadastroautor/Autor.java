@@ -1,4 +1,4 @@
-package br.com.zupacademy.fpsaraiva.casadocodigo.autor;
+package br.com.zupacademy.fpsaraiva.casadocodigo.cadastroautor;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -14,13 +14,17 @@ public class Autor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @NotBlank
     private String nome;
+
     @NotBlank @Email
     private String email;
+
     @Column(length = 400)
     @Size(max = 400)
     private String descricao;
+
     @NotNull
     private LocalDateTime instanteCriacao = LocalDateTime.now();
 
@@ -31,6 +35,10 @@ public class Autor {
         this.nome = nome;
         this.email = email;
         this.descricao = descricao;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getNome() {

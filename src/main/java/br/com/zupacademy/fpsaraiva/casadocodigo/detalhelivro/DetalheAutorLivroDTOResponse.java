@@ -1,6 +1,6 @@
 package br.com.zupacademy.fpsaraiva.casadocodigo.detalhelivro;
 
-import br.com.zupacademy.fpsaraiva.casadocodigo.autor.Autor;
+import br.com.zupacademy.fpsaraiva.casadocodigo.cadastroautor.Autor;
 
 import javax.validation.constraints.NotBlank;
 
