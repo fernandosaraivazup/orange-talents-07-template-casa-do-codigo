@@ -1,4 +1,4 @@
-package br.com.zupacademy.fpsaraiva.casadocodigo.categoria;
+package br.com.zupacademy.fpsaraiva.casadocodigo.cadastrocategoria;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,6 +12,7 @@ public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @NotBlank
     private String nome;
 
@@ -21,6 +22,10 @@ public class Categoria {
 
     public Categoria(@NotBlank String nome) {
         this.nome = nome;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getNome() {

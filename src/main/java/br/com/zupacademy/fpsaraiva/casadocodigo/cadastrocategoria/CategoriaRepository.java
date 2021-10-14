@@ -1,4 +1,4 @@
-package br.com.zupacademy.fpsaraiva.casadocodigo.categoria;
+package br.com.zupacademy.fpsaraiva.casadocodigo.cadastrocategoria;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

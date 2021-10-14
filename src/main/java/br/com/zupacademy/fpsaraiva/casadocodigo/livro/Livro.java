@@ -1,7 +1,7 @@
 package br.com.zupacademy.fpsaraiva.casadocodigo.livro;
 
 import br.com.zupacademy.fpsaraiva.casadocodigo.cadastroautor.Autor;
-import br.com.zupacademy.fpsaraiva.casadocodigo.categoria.Categoria;
+import br.com.zupacademy.fpsaraiva.casadocodigo.cadastrocategoria.Categoria;
 
 import javax.persistence.*;
 import javax.validation.Valid;

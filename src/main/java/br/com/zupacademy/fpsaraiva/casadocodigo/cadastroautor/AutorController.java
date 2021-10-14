@@ -20,7 +20,7 @@ public class AutorController {
         autorRepository.save(novoAutor);
 
         return ResponseEntity.ok(uriComponentsBuilder
-                .path("/cartoes/{id}/aviso")
+                .path("/api/autor/{id}")
                 .buildAndExpand(novoAutor.getId())
                 .toUri());
     }

@@ -1,6 +1,6 @@
 package br.com.zupacademy.fpsaraiva.casadocodigo.detalhelivro;
 
-import br.com.zupacademy.fpsaraiva.casadocodigo.categoria.Categoria;
+import br.com.zupacademy.fpsaraiva.casadocodigo.cadastrocategoria.Categoria;
 
 import javax.validation.constraints.NotBlank;
 

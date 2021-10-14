@@ -1,7 +1,5 @@
 package br.com.zupacademy.fpsaraiva.casadocodigo.cadastrocategoria;
 
-import br.com.zupacademy.fpsaraiva.casadocodigo.categoria.Categoria;
-import br.com.zupacademy.fpsaraiva.casadocodigo.categoria.CategoriaRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -33,7 +31,6 @@ public class CategoriaControllerTest {
 
     @DisplayName("Deve retornar status 200 e cadastrar categoria no banco")
     @Test
-    @Order(1)
     void deveRetornarStatus200ECadastrarCategoriaNoBanco() throws Exception {
         URI uri = new URI("/api/categoria");
         String json = "{\"nome\":\"Categoria 1\"}";
@@ -51,7 +48,6 @@ public class CategoriaControllerTest {
 
     @DisplayName("Deve retornar status 400 ao tentar cadastrar categoria com nome em branco")
     @Test
-    @Order(2)
     void deveRetornarStatus400AoTentarCadastrarCategoriaComNomeEmBranco() throws Exception {
         URI uri = new URI("/api/categoria");
         String json = "{\"nome\":\"\"}";
